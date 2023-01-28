@@ -470,7 +470,7 @@ EXPORT_SYMBOL_GPL(hisysevent_put_string);
 int hisysevent_write(struct hiview_hisysevent *event)
 {
 	struct iov_iter iter;
-	mm_segment_t oldfs;
+	// mm_segment_t oldfs;
 	char *data = NULL;
 	struct file *filp = NULL;
 	struct iovec vec[3];
@@ -501,11 +501,11 @@ int hisysevent_write(struct hiview_hisysevent *event)
 	vec[vcount].iov_base = data;
 	vec[vcount++].iov_len = strlen(data) + 1;
 
-	oldfs = get_fs();
-	set_fs(KERNEL_DS);
+	// oldfs = get_fs();
+	// set_fs(KERNEL_DS);
 	iov_iter_init(&iter, WRITE, vec, vcount, iov_length(vec, vcount));
 	ret = vfs_iter_write(filp, &iter, &filp->f_pos, 0);
-	set_fs(oldfs);
+	// set_fs(oldfs);
 
 	if (ret < 0)
 		pr_err("failed to write hisysevent, ret=%d", ret);
