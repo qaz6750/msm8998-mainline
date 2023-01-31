@@ -90,4 +90,10 @@ source "drivers/staging/hievent/Kconfig"
 
 source "drivers/staging/hisysevent/Kconfig"
 
+source "drivers/staging/zerohung/Kconfig"
+
+source "drivers/staging/hungtask/Kconfig"
+
+source "drivers/staging/blackbox/Kconfig"
+
 endif # STAGING

@@ -5566,6 +5566,19 @@ static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		if (ret < 0)
 			goto err;
 		break;
+	case BINDER_FEATURE_SET: {
+		struct binder_feature_set __user *features = ubuf;
+
+		if (size != sizeof(struct binder_feature_set)) {
+			ret = -EINVAL;
+			goto err;
+		}
+		if (put_user(BINDER_CURRENT_FEATURE_SET, &features->feature_set)) {
+			ret = -EINVAL;
+			goto err;
+		}
+		break;
+	}
 #ifdef CONFIG_ACCESS_TOKENID
 	case BINDER_GET_ACCESS_TOKEN: {
 		struct access_token __user *tokens = ubuf;
