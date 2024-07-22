@@ -317,7 +317,7 @@
 };
 
 &ipa {
-	status = "okay";
+	status = "disabled";
 
 	memory-region = <&ipa_fws_region>; // ipa_fw_mem? ipa_gsi_mem?
 	firmware-name = "qcom/msm8998/oneplus/ipa_fws.mbn";
@@ -572,19 +572,19 @@
 };
 
 &remoteproc_adsp {
-	status = "okay";
+	status = "disabled";
 
 	firmware-name = "qcom/msm8998/oneplus/adsp.mbn";
 };
 
 &remoteproc_mss {
-	status = "okay";
+	status = "disabled";
 
 	firmware-name = "qcom/msm8998/oneplus/mba.mbn", "qcom/msm8998/oneplus/modem.mbn";
 };
 
 &remoteproc_slpi {
-	status = "okay";
+	status = "disabled";
 
 	firmware-name = "qcom/msm8998/oneplus/slpi_v2.mbn";
 };
