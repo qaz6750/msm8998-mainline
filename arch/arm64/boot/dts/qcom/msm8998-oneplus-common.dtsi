@@ -572,19 +572,19 @@
 };
 
 &remoteproc_adsp {
-	status = "disabled";
+	status = "okay";
 
 	firmware-name = "qcom/msm8998/oneplus/adsp.mbn";
 };
 
 &remoteproc_mss {
-	status = "disabled";
+	status = "okay";
 
 	firmware-name = "qcom/msm8998/oneplus/mba.mbn", "qcom/msm8998/oneplus/modem.mbn";
 };
 
 &remoteproc_slpi {
-	status = "disabled";
+	status = "okay";
 
 	firmware-name = "qcom/msm8998/oneplus/slpi_v2.mbn";
 };
