@@ -254,7 +254,7 @@ s6e3fc1_create_backlight(struct mipi_dsi_device *dsi)
 	struct device *dev = &dsi->dev;
 	const struct backlight_properties props = {
 		.type = BACKLIGHT_RAW,
-		.brightness = 1023,
+		.brightness = 512,
 		.max_brightness = 1023,
 	};
 
