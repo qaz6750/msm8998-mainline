@@ -202,14 +202,6 @@
 	};
 };
 
-&apc_cprh {
-	status = "okay";
-};
-
-&cpufreq_hw {
-	status = "okay";
-};
-
 &blsp1_i2c5 {
 	pinctrl-names = "default", "sleep";
 	status = "okay";

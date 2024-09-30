@@ -344,9 +344,6 @@
 	status = "okay";
 };
 
-&apc_cprh {
-	status = "okay";
-};
 
 &blsp1_i2c6 {
 	status = "okay";
@@ -399,10 +396,6 @@
 		pinctrl-names = "active";
 		pinctrl-0 = <&ts_rst_n>, <&ts_int_n>;
 	};
-};
-
-&cpufreq_hw {
-	status = "okay";
 };
 
 &dsi0 {

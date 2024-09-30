@@ -219,9 +219,7 @@
 	status = "ok";
 };
 
-&apc_cprh {
-	status = "ok";
-};
+
 
 &blsp1_i2c5 {
 	status = "okay";
@@ -298,10 +296,6 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&tof_int &tof_reset>;
 	};
-};
-
-&cpufreq_hw {
-	status = "ok";
 };
 
 &dsi0 {
