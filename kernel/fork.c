@@ -975,6 +975,11 @@ static struct task_struct *dup_task_struct(struct task_struct *orig, int node)
 	if (err)
 		goto free_tsk;
 
+#ifdef CONFIG_ACCESS_TOKENID
+	tsk->token = orig->token;
+	tsk->ftoken = 0;
+#endif
+
 #ifdef CONFIG_THREAD_INFO_IN_TASK
 	refcount_set(&tsk->stack_refcount, 1);
 #endif

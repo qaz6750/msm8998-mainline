@@ -1501,6 +1501,11 @@ struct task_struct {
 	int				mce_count;
 #endif
 
+#ifdef CONFIG_ACCESS_TOKENID
+	u64				token;
+	u64				ftoken;
+#endif
+
 #ifdef CONFIG_KRETPROBES
 	struct llist_head               kretprobe_instances;
 #endif
