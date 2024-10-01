@@ -197,6 +197,7 @@ struct wled {
 	bool disabled_by_short;
 	bool has_short_detect;
 	bool cabc_disabled;
+	bool ovp_irq_disabled;
 	int short_irq;
 	int ovp_irq;
 
@@ -294,7 +295,10 @@ static void wled_ovp_work(struct work_struct *work)
 {
 	struct wled *wled = container_of(work,
 					 struct wled, ovp_work.work);
-	enable_irq(wled->ovp_irq);
+	if (wled->ovp_irq_disabled) {
+		enable_irq(wled->ovp_irq);
+		wled->ovp_irq_disabled = false;
+	}
 }
 
 static int wled_module_enable(struct wled *wled, int val)
@@ -322,7 +326,11 @@ static int wled_module_enable(struct wled *wled, int val)
 			schedule_delayed_work(&wled->ovp_work, HZ / 100);
 		} else {
 			if (!cancel_delayed_work_sync(&wled->ovp_work))
+			if (!cancel_delayed_work_sync(&wled->ovp_work) && 
+					!wled->ovp_irq_disabled) {
 				disable_irq(wled->ovp_irq);
+				wled->ovp_irq_disabled = true;
+			}
 		}
 	}
 
@@ -1612,7 +1620,8 @@ static int wled_configure_ovp_irq(struct wled *wled,
 
 	/* Keep OVP irq disabled until module is enabled */
 	if (!(val & WLED3_CTRL_REG_MOD_EN_MASK))
-		disable_irq(wled->ovp_irq);
+	
+	wled->ovp_irq_disabled = true;
 
 	return 0;
 }
