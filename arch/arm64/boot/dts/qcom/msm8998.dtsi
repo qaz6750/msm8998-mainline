@@ -3242,7 +3242,7 @@
 				reg-names = "mdp", "regdma", "vbif",
 					    "vbif_nrt";
 
-				assigned-clocks = <&dispcc DISP_CC_MDSS_VSYNC_CLK>;
+				assigned-clocks = <&mmcc MDSS_VSYNC_CLK>;
 				assigned-clock-rates = <19200000>;
 
 				clocks = <&mmcc MDSS_AHB_CLK>,
