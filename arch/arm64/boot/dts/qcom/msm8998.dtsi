@@ -3219,8 +3219,6 @@
 				 <&mmcc MDSS_MDP_CLK>;
 			clock-names = "iface", "bus", "core";
 
-			assigned-clocks = <&mmcc MDSS_MDP_CLK>;
-			assigned-clock-rates = <300000000>;
 			interconnects = <&mnoc MASTER_MDP_P0 &bimc SLAVE_EBI>,
 					<&mnoc MASTER_MDP_P1 &bimc SLAVE_EBI>;
 			interconnect-names = "mdp0-mem",
@@ -3244,10 +3242,8 @@
 				reg-names = "mdp", "regdma", "vbif",
 					    "vbif_nrt";
 
-				assigned-clocks = <&mmcc MDSS_MDP_CLK>,
-						  <&mmcc MDSS_VSYNC_CLK>;
-				assigned-clock-rates = <412500000>,
-						       <19200000>;
+				assigned-clocks = <&dispcc DISP_CC_MDSS_VSYNC_CLK>;
+				assigned-clock-rates = <19200000>;
 
 				clocks = <&mmcc MDSS_AHB_CLK>,
 					 <&mmcc MDSS_AXI_CLK>,
