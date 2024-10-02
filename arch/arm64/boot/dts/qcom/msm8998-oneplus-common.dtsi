@@ -297,18 +297,13 @@
 &blsp2_i2c3 {
 	status = "disabled";
 
-	audio-codec@36 {
-		compatible = "nxp,tfa9890";
+	tfa9891_codec: tfa9891@36 {
+		#sound-dai-cells = <1>;
+		compatible = "nxp,tfa9891";
 		reg = <0x36>;
-
-		/*
-		 * vddd-supply = <&vreg_bob>;
-		 * vreg_l20a_2p95? 2950000->2960000 mV @ 200->800000 mA?
-		 */
-
-		sound-name-prefix = "Mono Speaker";
-		#sound-dai-cells = <0>;
-		status = "disabled";
+		reset-gpio= <&tlmm 49 0>;
+		irq-gpio= <&tlmm 50 0>;
+		status = "ok";
 	};
 };
 
